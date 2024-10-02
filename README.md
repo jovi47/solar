@@ -1,5 +1,5 @@
 <div>
-    <img style="max-width: fit-content; margin-inline: auto;" height="135" src="/src/assets/solar.jpeg">
+    <img style="margin:0 auto;" height="" src="/src/assets/solar.jpeg">
 </div>
 
 ### Solar é um projeto acadêmico que será desenvolvido para a UFS na matéria de Programação Orientada a Objetos
