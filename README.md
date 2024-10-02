@@ -1,8 +1,8 @@
-# Solar
+<div>
+    <img style="margin:0 auto;" height="" src="/src/assets/solar.jpeg">
+</div>
 
-![a](/home/joao.svieira/Documentos/solar/src/assets/solar.jpeg)
-
-Solar é um projeto acadêmico que será desenvolvido para a UFS na matéria de Programação Orientada a Objetos
+### Solar é um projeto acadêmico que será desenvolvido para a UFS na matéria de Programação Orientada a Objetos
 
 ## Objetivos
 
