@@ -1,7 +1,12 @@
 package com.solar;
 
 import javax.swing.*;
+
+import com.google.gson.Gson;
+import com.solar.entities.Customer;
+import com.solar.services.CustomerService;
 import net.miginfocom.swing.MigLayout;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -26,5 +31,11 @@ public class Main {
         // Adicionando o painel ao frame
         frame.add(panel);
         frame.setVisible(true);
+
+        CustomerService customerManager = new CustomerService();
+
+        // Exemplo: Adicionar um novo cliente
+        Customer newCustomer = new Customer("John Doe", "123456s789", "555-1234", "123 Elm St");
+        customerManager.save(newCustomer);
     }
 }
