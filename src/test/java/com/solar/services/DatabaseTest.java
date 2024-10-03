@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ class DatabaseTest {
     }
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         File file = new File(FILE_PATH);
         if (file.exists()) {
             file.delete();
@@ -76,7 +77,12 @@ class DatabaseTest {
         Type customerListType = new TypeToken<List<Customer>>() {
         }.getType();
 
-        List<Customer> customers = database.findAllOnFile(FILE_PATH, customerListType);
+        List<Customer> customers = new ArrayList<>();
+        customers.add(new Customer("John Doe", "123456789", "555-1234", "123 Elm St"));
+
+        database.saveOnFile(FILE_PATH, customers);
+
+        customers = database.findAllOnFile(FILE_PATH, customerListType);
 
         assertNotNull(customers);
         assertEquals(1, customers.size());
