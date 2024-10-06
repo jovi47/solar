@@ -13,6 +13,6 @@ public class Inverter extends Equipment{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Inverter inverter = (Inverter) o;
-        return Objects.equals(super.getModel(), Inverter.super.getModel());
+        return Objects.equals(super.getModel(), inverter.getModel());
     }
 }
