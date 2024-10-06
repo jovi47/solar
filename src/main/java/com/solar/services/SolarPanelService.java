@@ -28,7 +28,7 @@ public class SolarPanelService implements Database<SolarPanel> {
         if (!solarPanels.contains(solarPanel)) {
             solarPanels.add(solarPanel);
         } else {
-            throw new RuntimeException("Customer already exists");
+            throw new RuntimeException("Solar Panel already exists");
         }
 
         saveOnFile(filePath, solarPanels);

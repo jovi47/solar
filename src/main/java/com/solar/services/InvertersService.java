@@ -1,6 +1,5 @@
 package com.solar.services;
 
-import com.solar.entities.Equipment;
 import com.google.gson.reflect.TypeToken;
 import com.solar.entities.Inverter;
 
@@ -12,7 +11,11 @@ public class InvertersService implements Database<Inverter> {
     private final String filePath;
 
     public InvertersService() {
-        filePath = "src/database/inverters.json";
+        this.filePath = "src/database/inverters.json";
+    }
+
+    public InvertersService(String filePath) {
+        this.filePath = filePath;
     }
 
     @Override
@@ -27,7 +30,7 @@ public class InvertersService implements Database<Inverter> {
         if (!inverters.contains(inverter)) {
             inverters.add(inverter);
         } else {
-            throw new RuntimeException("Customer already exists");
+            throw new RuntimeException("Inverter already exists");
         }
 
         saveOnFile(filePath, inverters);
