@@ -16,6 +16,10 @@ public class SolarPanelService implements Database<SolarPanel> {
         filePath = "src/database/solar-panels.json";
     }
 
+    public SolarPanelService(String filePath) {
+        this.filePath = filePath;
+    }
+
     @Override
     public void save(SolarPanel solarPanel) {
         List<SolarPanel> solarPanels = findAll();
