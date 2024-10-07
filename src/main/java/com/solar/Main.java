@@ -4,7 +4,12 @@ import javax.swing.*;
 
 import com.google.gson.Gson;
 import com.solar.entities.Customer;
+import com.solar.entities.Fabricator;
+import com.solar.entities.Inverter;
+import com.solar.entities.SolarPanel;
 import com.solar.services.CustomerService;
+import com.solar.services.InvertersService;
+import com.solar.services.SolarPanelService;
 import net.miginfocom.swing.MigLayout;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -37,5 +42,17 @@ public class Main {
         // Exemplo: Adicionar um novo cliente
         Customer newCustomer = new Customer("John Doe", "123456s789", "555-1234", "123 Elm St");
         customerManager.save(newCustomer);
+
+        InvertersService inverterManager = new InvertersService();
+        SolarPanelService solarPanelManager = new SolarPanelService();
+
+        // Exemplo: Adicionar um novo Equipamento
+        Fabricator fabricator1 = new Fabricator("Fabricator A");
+
+        Inverter newInverter = new Inverter(fabricator1, "model 3b", 5000, 2000.0);
+        SolarPanel newSolarPanel = new SolarPanel(fabricator1, "SolarPanels 2t", 300, 1500.0,5);
+
+        inverterManager.save(newInverter);
+        solarPanelManager.save(newSolarPanel);
     }
 }
