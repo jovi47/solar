@@ -1,24 +1,23 @@
 package com.solar.services;
 
-import com.google.gson.reflect.TypeToken;
-import com.solar.entities.Customer;
+import com.solar.entities.Fabricator;
 import com.solar.entities.Inverter;
 
 import org.junit.jupiter.api.*;
 
 import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class InvertersServiceTest {
     private static InvertersService invertersService;
+    private static Fabricator fabricator;
     private static final String FILE_PATH = "test_invester.json";
 
     @BeforeAll
     static void setUpAll() {
+        fabricator = new Fabricator("Fabricator A");
         invertersService = new InvertersService(FILE_PATH);
     }
 
@@ -39,7 +38,7 @@ class InvertersServiceTest {
 
     @Test
     void testSave() {
-        Inverter inverter = new Inverter("Inverter SE", "ZT-SOLAR", 2000, 3000);
+        Inverter inverter = new Inverter(fabricator, "ZT-SOLAR", 2000, 3000);
         invertersService.save(inverter);
 
         File file = new File(FILE_PATH);
@@ -49,10 +48,10 @@ class InvertersServiceTest {
 
     @Test
     void testFindAll() {
-        Inverter inverter = new Inverter("Inverters Paulo Afonso", "BA-SOLAR01", 2300, 4000);
+        Inverter inverter = new Inverter(fabricator, "BA-SOLAR01", 2300, 4000);
         invertersService.save(inverter);
 
-        Inverter inverter2 = new Inverter("Inverters Paulo Afonso", "BA-T5000", 4000, 7000);
+        Inverter inverter2 = new Inverter(fabricator, "BA-T5000", 4000, 7000);
         invertersService.save(inverter2);
 
         List<Inverter> inverters = invertersService.findAll();
@@ -65,7 +64,7 @@ class InvertersServiceTest {
 
     @Test
     void testSaveFailure() {
-        Inverter inverter = new Inverter("itabaianinha", "ITA_ZT01", 3500, 5000);
+        Inverter inverter = new Inverter(fabricator, "ITA_ZT01", 3500, 5000);
         invertersService.save(inverter);
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {

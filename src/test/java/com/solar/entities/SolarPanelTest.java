@@ -7,15 +7,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SolarPanelTest {
     private SolarPanel solarPanel;
+    private Fabricator fabricator;
 
     @BeforeEach
     void setUp() {
-        solarPanel = new SolarPanel("Mundo das Placas", "PS-08", 5000,7000,8);
+        fabricator = new Fabricator("Fabricator C");
+        solarPanel = new SolarPanel(fabricator, "PS-08", 5000,7000,8);
     }
 
     @Test
     void testSolarPanelEqualsByModel() {
-        SolarPanel newSolarPanel = new SolarPanel("Solar SE", "S-5000", 2000, 3000, 5);
+        SolarPanel newSolarPanel = new SolarPanel(fabricator, "S-5000", 2000, 3000, 5);
         assertNotEquals(solarPanel, newSolarPanel);
 
         newSolarPanel.setModel(solarPanel.getModel());
@@ -24,8 +26,8 @@ class SolarPanelTest {
 
     @Test
     public void testUpdateSolarPanelFieldsWithValidData() {
-        solarPanel.setfabricator("UFS-Solar");
-        assertEquals("UFS-Solar", solarPanel.getfabricator());
+        solarPanel.setFabricatorName("UFS-Solar");
+        assertEquals("UFS-Solar", solarPanel.getFabricatorName());
         solarPanel.setModel("UZT-500");
         assertEquals("UZT-500", solarPanel.getModel());
         solarPanel.setPotency(5500);
@@ -34,8 +36,8 @@ class SolarPanelTest {
         assertEquals(6000, solarPanel.getPrice());
         solarPanel.setCapacity(6);
         assertEquals(6, solarPanel.getCapacity());
-        solarPanel.setfabricator("");
-        assertEquals("",solarPanel.getfabricator());
+        solarPanel.setFabricatorName("");
+        assertEquals("",solarPanel.getFabricatorName());
         solarPanel.setPotency(0);
         assertEquals(0, solarPanel.getPotency());
     }

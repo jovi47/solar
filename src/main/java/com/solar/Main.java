@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import com.google.gson.Gson;
 import com.solar.entities.Customer;
+import com.solar.entities.Fabricator;
 import com.solar.entities.Inverter;
 import com.solar.entities.SolarPanel;
 import com.solar.services.CustomerService;
@@ -46,8 +47,10 @@ public class Main {
         SolarPanelService solarPanelManager = new SolarPanelService();
 
         // Exemplo: Adicionar um novo Equipamento
-        Inverter newInverter = new Inverter("Fabricator A", "model 3b", 5000, 2000.0);
-        SolarPanel newSolarPanel = new SolarPanel("Fabricator B", "SolarPanels 2t", 300, 1500.0,5);
+        Fabricator fabricator1 = new Fabricator("Fabricator A");
+
+        Inverter newInverter = new Inverter(fabricator1, "model 3b", 5000, 2000.0);
+        SolarPanel newSolarPanel = new SolarPanel(fabricator1, "SolarPanels 2t", 300, 1500.0,5);
 
         inverterManager.save(newInverter);
         solarPanelManager.save(newSolarPanel);

@@ -1,8 +1,6 @@
 package com.solar.services;
 
-import com.solar.entities.Equipment;
 import com.google.gson.reflect.TypeToken;
-import com.solar.entities.Inverter;
 import com.solar.entities.SolarPanel;
 
 import java.lang.reflect.Type;
